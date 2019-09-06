@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1082172948892",
+    "firebase_url": "https://git-trending-fe1ba.firebaseio.com",
+    "project_id": "git-trending-fe1ba",
+    "storage_bucket": "git-trending-fe1ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082172948892:android:d6f9a69a9a4dc23aec8859",
+        "android_client_info": {
+          "package_name": "com.git_trending.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1082172948892-73p1f7kre2d98hvuua877elihg1se3i5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOnR_X3disOUis8WF-J-dgnsCii4orZ6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1082172948892-73p1f7kre2d98hvuua877elihg1se3i5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
