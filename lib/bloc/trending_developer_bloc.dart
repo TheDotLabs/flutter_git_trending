@@ -8,17 +8,18 @@ import 'package:flutter_git_trending/utils/stream_response.dart';
 import 'package:rxdart/rxdart.dart';
 
 class TrendingDeveloperBloc {
-  final _dataSubject = BehaviorSubject<StreamData>();
+  final _dataSubject = BehaviorSubject<List<TrendingDeveloperItem>>();
 
   get dataStream => _dataSubject.stream;
 
   void fetchData() async {
     try {
-      _dataSubject.addError(StreamData.loading());
+      _dataSubject.add(null);
       var response = await ApiHelper().get(endpoint: ApiEndpoint.trending);
       if (response.isSuccess) {
-        var model = TrendingDeveloperModel.fromMapList(list: json.decode(response.body));
-        _dataSubject.sink.add(StreamData.data(model.list));
+        var model = TrendingDeveloperModel.fromMapList(
+            list: json.decode(response.body));
+        _dataSubject.sink.add(model.list);
       } else {
         _dataSubject.addError(StreamError.serverError(response.statusCode));
       }
