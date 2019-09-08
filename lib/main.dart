@@ -1,9 +1,15 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_git_trending/bloc/application_bloc.dart';
+import 'package:flutter_git_trending/data/prefs_helper.dart';
 import 'package:flutter_git_trending/pages/home_page.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  await prefsHelper.initialize();
+  ApplicationBloc().init();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   static FirebaseAnalytics analytics = FirebaseAnalytics();

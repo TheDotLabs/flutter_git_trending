@@ -24,7 +24,6 @@ TrendingRepoItem _$TrendingRepoItemFromJson(Map<String, dynamic> json) {
           ?.toList());
 }
 
-
 BuiltBy _$BuiltByFromJson(Map<String, dynamic> json) {
   return BuiltBy(
       username: json['username'] as String,
