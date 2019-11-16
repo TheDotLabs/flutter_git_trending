@@ -12,7 +12,8 @@ class TrendingDeveloperModel {
   }
 
   factory TrendingDeveloperModel.fromMapList({List<dynamic> list}) {
-    final items = list.cast<Map<String, Object>>().map((Map<String, Object> item) {
+    final items =
+        list.cast<Map<String, Object>>().map((Map<String, Object> item) {
       return TrendingDeveloperItem.fromJson(item);
     }).toList();
     return TrendingDeveloperModel._internal(items);
@@ -28,9 +29,13 @@ class TrendingDeveloperItem {
   final String avatar;
   final Repo repo;
 
-  TrendingDeveloperItem(this.username, this.name, this.type, this.url, this.avatar, this.repo);
+  TrendingDeveloperItem(
+      this.username, this.name, this.type, this.url, this.avatar, this.repo);
 
-  factory TrendingDeveloperItem.fromJson(Map<String, dynamic> json) => _$TrendingDeveloperItemFromJson(json);
+  factory TrendingDeveloperItem.fromJson(Map<String, dynamic> json) =>
+      _$TrendingDeveloperItemFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TrendingDeveloperItemToJson(this);
 }
 
 @JsonSerializable()
@@ -46,4 +51,6 @@ class Repo {
   );
 
   factory Repo.fromJson(Map<String, dynamic> json) => _$RepoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RepoToJson(this);
 }

@@ -24,6 +24,21 @@ TrendingRepoItem _$TrendingRepoItemFromJson(Map<String, dynamic> json) {
           ?.toList());
 }
 
+Map<String, dynamic> _$TrendingRepoItemToJson(TrendingRepoItem instance) =>
+    <String, dynamic>{
+      'author': instance.author,
+      'name': instance.name,
+      'avatar': instance.avatar,
+      'url': instance.url,
+      'description': instance.description,
+      'language': instance.language,
+      'languageColor': instance.languageColor,
+      'stars': instance.stars,
+      'forks': instance.forks,
+      'currentPeriodStars': instance.currentPeriodStars,
+      'builtBy': instance.builtBy?.map((e) => e?.toJson())?.toList()
+    };
+
 BuiltBy _$BuiltByFromJson(Map<String, dynamic> json) {
   return BuiltBy(
       username: json['username'] as String,

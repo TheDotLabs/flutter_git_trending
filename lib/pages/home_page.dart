@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_git_trending/bloc/application_bloc.dart';
 import 'package:flutter_git_trending/data/model/language_model.dart';
+import 'package:flutter_git_trending/data/model/trending_repo_model.dart';
 import 'package:flutter_git_trending/pages/about_page.dart';
+import 'package:flutter_git_trending/pages/bookmark_page.dart';
 import 'package:flutter_git_trending/pages/trending_developer_page.dart';
 import 'package:flutter_git_trending/pages/trending_repo_page.dart';
 import 'package:flutter_git_trending/utils/top_level.dart';
@@ -42,9 +44,45 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.info_outline),
-              onPressed: onInfoTap,
+            Stack(
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.bookmark_border),
+                  onPressed: onBookmarkTap,
+                ),
+                Positioned(
+                  right: 6,
+                  top: 6,
+                  child: StreamBuilder<List<TrendingRepoItem>>(
+                      stream: ApplicationBloc().bookmark,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData &&
+                            snapshot.data != null &&
+                            snapshot.data.length > 0)
+                          return Container(
+                            height: 16,
+                            width: 16,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFC51162),
+                              shape: BoxShape.circle,
+                            ),
+                            child: Text(
+                              snapshot.data.length.toString(),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 0.6,
+                                  fontSize: 10),
+                            ),
+                          );
+                        else
+                          return SizedBox(
+                            height: 0,
+                          );
+                      }),
+                )
+              ],
             )
           ],
           bottom: TabBar(
@@ -61,10 +99,12 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           children: <Widget>[
             Expanded(
-              child: TabBarView(children: [
-                TrendingRepoPage(),
-                TrendingDeveloperPage(),
-              ]),
+              child: TabBarView(
+                children: [
+                  TrendingRepoPage(),
+                  TrendingDeveloperPage(),
+                ],
+              ),
             ),
           ],
         ),
@@ -155,7 +195,7 @@ class _HomePageState extends State<HomePage> {
           builder: (context, AsyncSnapshot<List<LanguageItem>> snapshot) {
             if (snapshot.hasData && snapshot.data != null) {
               var rawList = snapshot.data;
-              final list=List<LanguageItem>();
+              final list = List<LanguageItem>();
               list.addAll(rawList);
               if (applicationBloc.currentLanguage.value != null) {
                 list.remove(applicationBloc.currentLanguage.value);
@@ -226,5 +266,10 @@ class _HomePageState extends State<HomePage> {
       ));
       ApplicationBloc().setCurrentLanguage(item);
     }
+  }
+
+  void onBookmarkTap() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => BookmarkPage()));
   }
 }

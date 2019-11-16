@@ -94,7 +94,8 @@ class TrendingDeveloper extends StatelessWidget {
             ),
           ),
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => UrlPage(item.repo.url)));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => UrlPage(item.repo.url)));
           },
         ),
       ),

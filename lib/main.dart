@@ -6,6 +6,7 @@ import 'package:flutter_git_trending/data/prefs_helper.dart';
 import 'package:flutter_git_trending/pages/home_page.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await prefsHelper.initialize();
   ApplicationBloc().init();
   runApp(MyApp());

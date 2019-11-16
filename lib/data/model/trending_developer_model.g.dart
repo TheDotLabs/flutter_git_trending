@@ -19,6 +19,17 @@ TrendingDeveloperItem _$TrendingDeveloperItemFromJson(
           : Repo.fromJson(json['repo'] as Map<String, dynamic>));
 }
 
+Map<String, dynamic> _$TrendingDeveloperItemToJson(
+        TrendingDeveloperItem instance) =>
+    <String, dynamic>{
+      'username': instance.username,
+      'name': instance.name,
+      'type': instance.type,
+      'url': instance.url,
+      'avatar': instance.avatar,
+      'repo': instance.repo?.toJson()
+    };
+
 Repo _$RepoFromJson(Map<String, dynamic> json) {
   return Repo(json['name'] as String, json['description'] as String,
       json['url'] as String);

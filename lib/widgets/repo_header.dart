@@ -34,7 +34,7 @@ class RepoHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  author+"/"+name,
+                  author + "/" + name,
                   style: TextStyle(
                     color: Colors.black87,
                     fontSize: 16,
@@ -55,7 +55,7 @@ class RepoHeader extends StatelessWidget {
             width: 12,
           ),
           Text(
-            "#${index+1}",
+            "#${index + 1}",
             style: TextStyle(
               color: Colors.black54,
               fontWeight: FontWeight.w500,

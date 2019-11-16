@@ -52,7 +52,7 @@ class Profile extends StatelessWidget {
             ),
           ),
           Text(
-            "#${index+1}",
+            "#${index + 1}",
             style: TextStyle(
               color: Colors.black54,
               fontWeight: FontWeight.w500,

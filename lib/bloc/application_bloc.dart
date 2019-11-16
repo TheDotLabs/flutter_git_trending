@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_git_trending/data/model/language_model.dart';
+import 'package:flutter_git_trending/data/model/trending_repo_model.dart';
 import 'package:flutter_git_trending/data/prefs_helper.dart';
 import 'package:flutter_git_trending/utils/ApiEndpint.dart';
 import 'package:flutter_git_trending/utils/api_helper.dart';
@@ -16,6 +17,8 @@ class ApplicationBloc {
   static ApplicationBloc _instance;
   final _languages = BehaviorSubject<List<LanguageItem>>(seedValue: null);
   final currentLanguage = ValueNotifier<LanguageItem>(null);
+  final bookmark = BehaviorSubject<List<TrendingRepoItem>>(
+      seedValue: List<TrendingRepoItem>());
 
   factory ApplicationBloc() {
     if (_instance == null)
@@ -34,6 +37,7 @@ class ApplicationBloc {
     _setCurrentLanguage();
     _initLanguages();
     _fetchLanguage();
+    _initBookmarks();
   }
 
   void _fetchLanguage() async {
@@ -81,5 +85,40 @@ class ApplicationBloc {
       currentLanguage.value =
           LanguageItem.fromJson(jsonDecode(prefsHelper.getCurrentLanguage()));
     }
+  }
+
+  void _initBookmarks() {
+    var list = prefsHelper
+        .getBookmarks()
+        .where((item) => checkIfNotEmpty(item))
+        .map((item) => TrendingRepoItem.fromJson(jsonDecode(item)))
+        .toList();
+    bookmark.sink.add(list);
+  }
+
+  bool isBookmarked(String url) {
+    var list = bookmark.value.where((item) => item.url == url).toList();
+    return list.length > 0 ? true : false;
+  }
+
+  void addBookmark(TrendingRepoItem repo) {
+    var list = prefsHelper.getBookmarks();
+    list.add(jsonEncode(repo));
+    prefsHelper.saveBookmarks(list);
+    refreshBookmarks();
+  }
+
+  void removeBookmark(TrendingRepoItem repo) {
+    var list = prefsHelper
+        .getBookmarks()
+        .map((item) => TrendingRepoItem.fromJson(jsonDecode(item)))
+        .toList();
+    list.removeWhere((item) => item.url == repo.url);
+    prefsHelper.saveBookmarks(list.map((item) => jsonEncode(item)).toList());
+    refreshBookmarks();
+  }
+
+  void refreshBookmarks() {
+    _initBookmarks();
   }
 }

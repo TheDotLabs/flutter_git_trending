@@ -46,31 +46,32 @@ class TrendingRepo extends StatelessWidget {
                       SizedBox(
                         height: 4,
                       ),
-                      if(checkIfNotEmpty(item.language))
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            height: 16,
-                            width: 16,
-                            decoration: new BoxDecoration(
-                              color: HexColor(item.languageColor ?? "#ffffff"),
-                              shape: BoxShape.circle,
+                      if (checkIfNotEmpty(item.language))
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                              height: 16,
+                              width: 16,
+                              decoration: new BoxDecoration(
+                                color:
+                                    HexColor(item.languageColor ?? "#ffffff"),
+                                shape: BoxShape.circle,
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 6,
-                          ),
-                          Text(
-                            (item.language ?? "").toUpperCase(),
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.black54,
-                              fontWeight: FontWeight.w500,
+                            SizedBox(
+                              width: 6,
                             ),
-                          ),
-                        ],
-                      ),
+                            Text(
+                              (item.language ?? "").toUpperCase(),
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black54,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
                       SizedBox(
                         height: 6,
                       ),
@@ -96,7 +97,9 @@ class TrendingRepo extends StatelessWidget {
             ),
           ),
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => UrlPage(item.url)));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) =>
+                    UrlPage(item.url, showBookmark: true, repo: item)));
           },
         ),
       ),

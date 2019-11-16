@@ -10,6 +10,7 @@ class SharedPrefsHelper {
   static const String PREFS_LAST_LOCATION_LIST = 'trackLocationList';
   static const String PREFS_LANGUAGES_LIST = '"languagesData"';
   static const String PREFS_CURRENT_LANGUAGE = '"currentLanguage"';
+  static const String PREFS_BOOKMARKS = 'bookmark';
 
   factory SharedPrefsHelper() {
     if (_instance == null)
@@ -51,7 +52,15 @@ class SharedPrefsHelper {
     _prefs.setString(PREFS_CURRENT_LANGUAGE, jsonEncode);
   }
 
-  String getCurrentLanguage(){
+  String getCurrentLanguage() {
     return _prefs.getString(PREFS_CURRENT_LANGUAGE);
+  }
+
+  List<String> getBookmarks() {
+    return _prefs.getStringList(PREFS_BOOKMARKS) ?? List<String>();
+  }
+
+  void saveBookmarks(List<String> list) {
+    _prefs.setStringList(PREFS_BOOKMARKS, list);
   }
 }

@@ -36,7 +36,9 @@ class LanguageItem {
   Map<String, dynamic> toJson() => _$LanguageItemToJson(this);
   @override
   bool operator ==(other) {
-    return other is LanguageItem && name == other.name && urlParam == other.urlParam;
+    return other is LanguageItem &&
+        name == other.name &&
+        urlParam == other.urlParam;
   }
 
   @override
