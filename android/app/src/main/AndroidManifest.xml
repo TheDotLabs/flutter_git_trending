@@ -10,7 +10,7 @@
             android:name="io.flutter.app.FlutterApplication"
             android:label="GitHub Trending"
             android:icon="@mipmap/ic_launcher_square"
-            android:roundIcon="@mipmap/ic_launcher_circular">>
+            android:roundIcon="@mipmap/ic_launcher_circular">
         <meta-data
                 android:name="google_analytics_adid_collection_enabled"
                 android:value="false"/>
