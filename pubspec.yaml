@@ -33,6 +33,7 @@ dependencies:
   firebase_analytics: ^5.0.1
   shared_preferences: ^0.5.2
   fluttertoast: ^3.0.3
+  effective_dart: ^1.1.0
 
 dev_dependencies:
   flutter_test:
