@@ -4,6 +4,4 @@ A Flutter based project to view the trending repo(s) and developer(s).
 
 <a href="https://www.producthunt.com/posts/github-trending-2?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-github-trending-2" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=174647&theme=light" alt="Github Trending - See what's trending on Github today | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
 
-<img src="https://raw.githubusercontent.com/apgapg/flutter_git_trending/master/src/s1.png"  height = "400" alt="Physics Concepts">  
-<img src="https://raw.githubusercontent.com/apgapg/flutter_git_trending/master/src/s2.png"  height = "400" alt="Physics Concepts">  
-<img src="https://raw.githubusercontent.com/apgapg/flutter_git_trending/master/src/s3.png"  height = "400" alt="Physics Concepts">  
+<img src="https://raw.githubusercontent.com/apgapg/flutter_git_trending/master/src/s1.png"  height = "400" alt="Physics Concepts">  <img src="https://raw.githubusercontent.com/apgapg/flutter_git_trending/master/src/s2.png"  height = "400" alt="Physics Concepts">  <img src="https://raw.githubusercontent.com/apgapg/flutter_git_trending/master/src/s3.png"  height = "400" alt="Physics Concepts">  
