@@ -8,7 +8,7 @@ import 'package:flutter_git_trending/pages/home_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await prefsHelper.initialize();
-  ApplicationBloc().init();
+  await Firebase.ApplicationBloc().init();
   runApp(MyApp());
 }
 
