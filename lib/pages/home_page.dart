@@ -13,7 +13,6 @@ import 'package:flutter_git_trending/widgets/search_text_field.dart';
 import 'package:flutter_git_trending/widgets/stream_error_widget.dart';
 import 'package:flutter_git_trending/widgets/stream_loading_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rxdart/rxdart.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -163,11 +162,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   void onFABTap() {
-    Observable<List<LanguageItem>> filter;
+    //Observable<List<LanguageItem>> filter;
 
     var langugeStream = ApplicationBloc().languages;
     final _controller = TextEditingController();
-    filter = langugeStream.transform<List<LanguageItem>>(
+    final filter = langugeStream.transform<List<LanguageItem>>(
       StreamTransformer<List<LanguageItem>, List<LanguageItem>>.fromHandlers(
           handleData: (list, sink) {
         if (checkIfNotEmpty(_controller.text)) {

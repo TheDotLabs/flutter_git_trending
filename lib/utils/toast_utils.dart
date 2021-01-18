@@ -6,7 +6,7 @@ class ToastUtils {
       msg: message ?? "NA",
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
-      timeInSecForIos: 1,
+      timeInSecForIosWeb: 1,
     );
   }
 }

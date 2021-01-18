@@ -15,10 +15,11 @@ ApplicationBloc applicationBloc = new ApplicationBloc();
 
 class ApplicationBloc {
   static ApplicationBloc _instance;
-  final _languages = BehaviorSubject<List<LanguageItem>>(seedValue: null);
+  final _languages = BehaviorSubject<List<LanguageItem>>.seeded(null);
   final currentLanguage = ValueNotifier<LanguageItem>(null);
-  final bookmark = BehaviorSubject<List<TrendingRepoItem>>(
-      seedValue: List<TrendingRepoItem>());
+  final bookmark = BehaviorSubject<List<TrendingRepoItem>>.seeded(
+    <TrendingRepoItem>[],
+  );
 
   factory ApplicationBloc() {
     if (_instance == null)

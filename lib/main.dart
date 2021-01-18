@@ -1,5 +1,6 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_git_trending/bloc/application_bloc.dart';
 import 'package:flutter_git_trending/data/prefs_helper.dart';
@@ -8,7 +9,8 @@ import 'package:flutter_git_trending/pages/home_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await prefsHelper.initialize();
-  await Firebase.ApplicationBloc().init();
+  await Firebase.initializeApp();
+  ApplicationBloc().init();
   runApp(MyApp());
 }
 
