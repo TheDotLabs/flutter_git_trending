@@ -9,7 +9,7 @@ ApiHelper apiHelper = new ApiHelper();
 class ApiHelper {
   static final ApiHelper _instance = new ApiHelper._internal();
 
-  final String baseUrl = "https://github-trending-api.now.sh/";
+  final String baseUrl = "https://github-tranding.azurewebsites.net/";
 
   factory ApiHelper() {
     return _instance;
